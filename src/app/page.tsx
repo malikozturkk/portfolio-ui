@@ -1,13 +1,19 @@
+import AboutCard from "@/components/AboutCard";
+import ExperienceCard from "@/components/ExperienceCard";
+import ProfileCard from "@/components/ProfileCard";
+import ProjectsCard from "@/components/ProjectsCard";
+import SkillsCard from "@/components/SkillsCard";
 import { getRequest } from "@/utils/api";
 
 export default async function Home() {
-  const getPersonalInformation = await getRequest("personal-information");
-  console.log(getPersonalInformation, "getPersonalInformation")
+  const getPersonalInformation = await getRequest("personal-information?page=1&limit=8");
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main>
-        {getPersonalInformation.name}
-      </main>
-    </div>
+    <main>
+      <ProfileCard />
+      <AboutCard personalInfo={getPersonalInformation.personalInfo} />
+      <SkillsCard initialSkills={getPersonalInformation.skills} totalSkills={getPersonalInformation.totalSkills} />
+      <ExperienceCard experience={getPersonalInformation.experience} />
+      <ProjectsCard portfolio={getPersonalInformation.portfolio} />
+    </main>
   );
 }
