@@ -26,3 +26,20 @@ export interface Experience {
     color: string;
     logo: string;
 }
+
+export interface Portfolio {
+    image: string;
+    name: string;
+    position: string;
+    projectUrl: string;
+    codeUrl?: string;
+    technologies: string[];
+}
+
+export interface PersonalInformationResponse {
+    personalInfo: PersonalInfo;
+    skills: Skill[];
+    totalSkills: number;
+    experience: Experience[];
+    portfolio: Portfolio[];
+}

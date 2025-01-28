@@ -1,3 +1,4 @@
+import { PersonalInformationResponse } from "@/app/types";
 import AboutCard from "@/components/AboutCard";
 import ExperienceCard from "@/components/ExperienceCard";
 import ProfileCard from "@/components/ProfileCard";
@@ -6,7 +7,7 @@ import SkillsCard from "@/components/SkillsCard";
 import { getRequest } from "@/utils/api";
 
 export default async function Home() {
-  const getPersonalInformation = await getRequest("personal-information?page=1&limit=8");
+  const getPersonalInformation = await getRequest<PersonalInformationResponse>("personal-information?page=1&limit=8")
   return (
     <main>
       <ProfileCard />

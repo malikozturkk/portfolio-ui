@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import React from "react";
-import { Skill } from "@/app/types";
+import { PersonalInformationResponse, Skill } from "@/app/types";
 import { getRequest } from "@/utils/api";
 
 interface ISkills {
@@ -15,7 +15,7 @@ const SkillsCard: React.FC<ISkills> = ({ initialSkills, totalSkills }) => {
 
     const loadMoreSkills = async () => {
         const nextPage = currentPage + 1;
-        const newSkills = await getRequest(`personal-information?page=${nextPage}&limit=8`);
+        const newSkills = await getRequest<PersonalInformationResponse>(`personal-information?page=${nextPage}&limit=8`);
         setSkills((prevSkills) => [...prevSkills, ...newSkills.skills]);
         setCurrentPage(nextPage);
     };
