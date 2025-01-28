@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
     unoptimized: true,
     domains: ['cdn.jsdelivr.net'],
   },
-  output: 'export'
 };
 
 export default nextConfig;
